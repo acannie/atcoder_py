@@ -13,8 +13,8 @@ def chmax(dp, i, candidate):
 
 
 def fun1():
-    # s1 = input().split()
-    h = [2, 9, 4, 5, 1, 6, 10]
+    n = int(input())
+    h = list(map(int, input().split()))
 
     dp = []
     dp.append(0)
@@ -34,12 +34,12 @@ def fun1():
 
         dp.append(d_new)
 
-    print(dp)
+    print(dp[-1])
 
 
 def fun2():
-    # s1 = input().split()
-    h = [2, 9, 4, 5, 1, 6, 10]
+    n = int(input())
+    h = list(map(int, input().split()))
 
     # 無限大で初期化
     dp = []
@@ -58,11 +58,11 @@ def fun2():
         chmin(dp, i, d1 + dp[i-1])
         chmin(dp, i, d2 + dp[i-2])
 
-    print(dp)
+    print(dp[-1])
 
 
 def main():
-    fun1()
+    # fun1()
     fun2()
 
 
