@@ -76,25 +76,21 @@ def fun3():
     # 入力
     n = int(input())
     h = list(map(int, input().split()))
+    h.append(float("inf"))
+    h.append(float("inf"))
 
     # DP テーブル無限大で初期化
     dp = []
-    for i in range(n):
+    for i in range(n + 2):
         dp.append(float('inf'))
-    dp.append(float('inf'))
-    dp.append(float('inf'))
 
     dp[0] = 0
 
     # 計算
     for i in range(n):
-        if i >= (n-1):
-            continue
         d1 = abs(h[i + 1]-h[i])
         chmin(dp, i+1, d1 + dp[i])
 
-        if i >= (n-2):
-            continue
         d2 = abs(h[i+2]-h[i])
         chmin(dp, i+2, d2 + dp[i])
 
