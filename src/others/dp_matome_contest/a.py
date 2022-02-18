@@ -11,13 +11,13 @@ def chmax(dp, i, candidate):
         return True
     return False
 
+# chmax, chmin 使わない
+
 
 def fun1():
     # 入力
     n = int(input())
-    h = []
-    for i in range(n):
-        h.append(int(input()))
+    h = list(map(int, input().split()))
 
     # DP テーブル初期化
     dp = []
@@ -43,12 +43,11 @@ def fun1():
     print(dp[-1])
 
 
+# chmax, chmin 使わない
 def fun2():
     # 入力
     n = int(input())
-    h = []
-    for i in range(n):
-        h.append(int(input()))
+    h = list(map(int, input().split()))
 
     # DP テーブル無限大で初期化
     dp = []
@@ -72,9 +71,41 @@ def fun2():
     print(dp[-1])
 
 
+# 配る DP
+def fun3():
+    # 入力
+    n = int(input())
+    h = list(map(int, input().split()))
+
+    # DP テーブル無限大で初期化
+    dp = []
+    for i in range(n):
+        dp.append(float('inf'))
+    dp.append(float('inf'))
+    dp.append(float('inf'))
+
+    dp[0] = 0
+
+    # 計算
+    for i in range(n):
+        if i >= (n-1):
+            continue
+        d1 = abs(h[i + 1]-h[i])
+        chmin(dp, i+1, d1 + dp[i])
+
+        if i >= (n-2):
+            continue
+        d2 = abs(h[i+2]-h[i])
+        chmin(dp, i+2, d2 + dp[i])
+
+    # 出力
+    print(dp[n-1])
+
+
 def main():
     # fun1()
-    fun2()
+    # fun2()
+    fun3()
 
 
 if __name__ == "__main__":
